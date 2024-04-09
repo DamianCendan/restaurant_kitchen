@@ -1,7 +1,7 @@
 from django.shortcuts import render
 # Commit 7:
 from django.views import generic
-from .models import Item
+from .models import Item, MEAL_TYPE
 
 
 # commit 7: Create a class view base
@@ -10,9 +10,10 @@ class MenuList(generic.ListView):
     template_name = "index.html"
 
     # Commit 8:
-    def get_context_data(self):
-        context = {"meals": ["Pizza", "Pasta"],
-                   "ingredients": ["things"]}
+    # Commit 9:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["meals"] = MEAL_TYPE
         return context
 
 
