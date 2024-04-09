@@ -9,6 +9,12 @@ class MenuList(generic.ListView):
     queryset = Item.objects.order_by("-date_created")
     template_name = "index.html"
 
+    # Commit 8:
+    def get_context_data(self):
+        context = {"meals": ["Pizza", "Pasta"],
+                   "ingredients": ["things"]}
+        return context
+
 
 # Commit 7:
 class MenuItemDetail(generic.DetailView):
